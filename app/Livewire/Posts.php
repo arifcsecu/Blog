@@ -4,11 +4,14 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Post;
+use Livewire\WithPagination;
 
 class Posts extends Component
 {
 
-    public $posts, $title, $body, $postID, $postAdd = false, $postUpdate=false;
+    use WithPagination;
+
+    public $title, $body, $postID, $search = ' ', $postAdd = false, $postUpdate = false;
 
     public function addPost()
 
@@ -54,11 +57,10 @@ class Posts extends Component
         $this->title = $post->title;
         $this->body = $post->body;
 
-        $this->postID =$post->id;
+        $this->postID = $post->id;
 
         $this->postUpdate = true;
         $this->postAdd = false;
-
     }
 
     public function updatePost()
@@ -82,7 +84,7 @@ class Posts extends Component
         $this->resetfields();
     }
 
-    public function delete ($id)
+    public function delete($id)
     {
         $post = Post::find($id);
         $post->delete();
@@ -94,7 +96,11 @@ class Posts extends Component
 
     public function render()
     {
-        $this->posts = Post::latest()->get();
-        return view('livewire.posts');
+        return view('livewire.posts', [
+            'posts' => Post::where('title', 'like', '%' . $this->search . '%')
+            ->orWhere('body', 'like', '%' . $this->search . '%')
+            ->latest()
+            ->paginate(3)
+        ]);
     }
 }

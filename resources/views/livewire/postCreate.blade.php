@@ -22,12 +22,12 @@
     </div>
 
     <div class="text-right">
-        <button class="bg-green-500 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition">
+        <button class="bg-blue-700 text-white px-5 py-2 rounded-lg hover:bg-blue-900 transition">
             Submit
         </button>
 
         <button wire:click="cancel" type="button"
-                class="bg-red-500 text-white px-5 py-2 rounded-lg hover:bg-red-700 transition">
+                class="bg-red-500 text-white px-5 py-2 rounded-lg hover:bg-red-800 transition">
             Cancel
         </button>
     </div>
