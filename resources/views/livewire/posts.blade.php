@@ -37,22 +37,22 @@
 
         <tbody class="text-gray-700">
             @if ($posts->count() > 0)
-            @foreach ($posts as $post)
-            <tr class="hover:bg-gray-100">
-                <td class="px-4 py-2 border-b">{{ $post->id }}</td>
-                <td class="px-4 py-2 border-b">{{ $post->title }}</td>
-                <td class="px-4 py-2 border-b">{{ $post->body }}</td>
-                <td class="px-4 py-2 border-b">{{ $post->created_at }}</td>
-                <td class="px-4 py-2 border-b">
-                    <button class="rounded-md py-1 px-2 m-1 bg-purple-600 hover:bg-purple-800 text-white"
-                        wire:click="editPost({{$post->id}})">Edit</button>
+                @foreach ($posts as $post)
+                <tr class="hover:bg-gray-100">
+                    <td class="px-4 py-2 border-b">{{ $post->id }}</td>
+                    <td class="px-4 py-2 border-b">{{ $post->title }}</td>
+                    <td class="px-4 py-2 border-b">{{ $post->body }}</td>
+                    <td class="px-4 py-2 border-b">{{ $post->created_at }}</td>
+                    <td class="px-4 py-2 border-b">
+                        <button class="rounded-md py-1 px-2 m-1 bg-purple-600 hover:bg-purple-800 text-white"
+                            wire:click="editPost({{$post->id}})">Edit</button>
 
-                    <button class="rounded-md py-1 px-2 m-1 bg-red-600 hover:bg-red-800 text-white"
-                        wire:confirm="Are you sure to remove this blog?"
-                        wire:click="delete({{$post->id}})">Delete</button>
-                </td>
-            </tr>
-            @endforeach
+                        <button class="rounded-md py-1 px-2 m-1 bg-red-600 hover:bg-red-800 text-white"
+                            wire:confirm="Are you sure to remove this blog?"
+                            wire:click="delete({{$post->id}})">Delete</button>
+                    </td>
+                </tr>
+                @endforeach
             @else
             <tr>
                 <td colspan="4" class="text-red-500">There is no post!!</td>

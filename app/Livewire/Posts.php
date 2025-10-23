@@ -11,7 +11,12 @@ class Posts extends Component
 
     use WithPagination;
 
-    public $title, $body, $postID, $search = ' ', $postAdd = false, $postUpdate = false;
+    public $title;
+    public $body;
+    public $postID;
+    public $search = ' ';
+    public $postAdd = false;
+    public $postUpdate = false;
 
     public function addPost()
 
@@ -91,8 +96,6 @@ class Posts extends Component
 
         session()->flash("delete-message", "Post deleted Successfully!!");
     }
-
-
 
     public function render()
     {
